@@ -1,0 +1,70 @@
+{
+  "name": "lin3s-react-seo",
+  "version": "0.1.0",
+  "authors": [
+    {
+      "name": "LIN3S",
+      "email": "info@lin3s.com",
+      "homepage": "https://lin3s.com"
+    }
+  ],
+  "license": "MIT",
+  "description": "SEO",
+  "keywords": [
+    "lin3s",
+    "react",
+    "seo",
+    "helmet",
+    "js"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LIN3S/ReactSEO"
+  },
+  "bugs": {
+    "url": "https://github.com/LIN3S/ReactSEO/issues"
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "main": "dist/common/index.js",
+  "module": "dist/esm/index.js",
+  "scripts": {
+    "phoenix": "rimraf node_modules && yarn install",
+    "prebuild": "rimraf dist",
+    "eslint": "node_modules/.bin/eslint src/**/*.js",
+    "cs": "yarn eslint",
+    "build": "yarn prebuild && mkdirp dist && yarn cs && npm-run-all --parallel build:*",
+    "build:common": "node_modules/.bin/babel --copy-files --out-dir dist/common src",
+    "build:esm": "mkdirp dist/esm && cp -R src/ dist/esm"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-2",
+      "react"
+    ],
+    "plugins": [
+      "transform-class-properties"
+    ]
+  },
+  "dependencies": {
+    "react": "^16.5.2",
+    "react-helmet": "^5.2.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "eslint": "^4.19.1",
+    "eslint-plugin-babel": "^5.0.0",
+    "eslint-plugin-class-property": "^1.1.0",
+    "eslint-plugin-react": "^7.11.1",
+    "npm-run-all": "^4.1.3",
+    "rimraf": "^2.6.2"
+  }
+}
